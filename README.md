@@ -24,4 +24,4 @@ Contributions are welcome! Here’s how you can contribute:
 
 
 ## License 📜
-This repository is licensed under the MIT License. See the [LICENSE]() file for details.
+This repository is licensed under the MIT License. See the [LICENSE](https://github.com/saksham-1304/Algorithm_Design_And_Analysis/blob/main/LICENSE) file for details.
