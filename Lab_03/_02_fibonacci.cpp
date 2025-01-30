@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-static int count=0;
+static int count = 0;
 int fib(int n)
 {
     count++;
@@ -12,6 +12,6 @@ int main()
 {
     int n;
     cin >> n;
-    cout<<"The fibonnaci number is "<<fib(n)<<endl;
-    cout<<"The recursion was called "<<count<<" times"<<endl;
+    cout << "The fibonacci number is " << fib(n) << endl;
+    cout << "The recursion was called " << count << " times" << endl;
 }
