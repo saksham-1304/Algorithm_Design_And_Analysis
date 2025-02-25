@@ -21,14 +21,14 @@ bool isMagicSquare(int size, vector<vector<int>> &matrix)
     }
 
     // Check diagonals
-    int sumMainDiagonal = 0, sumAntiDiagonal = 0;
+    int sumDiagonal = 0, sumADiagonal = 0;
     for (int i = 0; i < size; i++)
     {
-        sumMainDiagonal += matrix[i][i];
-        sumAntiDiagonal += matrix[i][size - i - 1];
+        sumDiagonal += matrix[i][i];
+        sumADiagonal += matrix[i][size - i - 1];
     }
 
-    return (sumMainDiagonal == magicSum && sumAntiDiagonal == magicSum);
+    return (sumDiagonal == magicSum && sumADiagonal == magicSum);
 }
 
 // Function to print the magic square
