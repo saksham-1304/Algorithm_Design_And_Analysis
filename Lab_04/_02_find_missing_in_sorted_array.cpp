@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+// Find Missing Number
+
+#include <bits/stdc++.h>
 using namespace std;
 
 int findSmallestMissing(vector<int> &arr, int left, int right)

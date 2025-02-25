@@ -1,3 +1,5 @@
+// Binary V/s Ternary Search
+
 #include <bits/stdc++.h>
 using namespace std;
 int binarySearch(const vector<int> &arr, int left, int right, int key, int &comparisons)
