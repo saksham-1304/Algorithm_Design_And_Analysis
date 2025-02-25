@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-static int count=0;
+static int count = 0;
 void method__Euclidean_Algo(int n, int m)
 {
     count++;
@@ -21,5 +21,5 @@ int main()
     cout << "Enter second number:";
     cin >> m;
     method__Euclidean_Algo(n, m);
-    cout<<"The recursion was called "<<count<<" times"<<endl;
+    cout << "The recursion was called " << count << " times" << endl;
 }
