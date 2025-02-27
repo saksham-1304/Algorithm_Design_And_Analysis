@@ -1,53 +1,45 @@
-// Merge Sort
-
 #include <iostream>
 using namespace std;
+#define MAX_SIZE 100 // Maximum size of the link array
 
-const int MAX_SIZE = 1000; // Maximum size of the link array
+// Global arrays to represent Link List
+int data[MAX_SIZE]; // Stores actual values
+int link[MAX_SIZE]; // Stores indices of the next elements
+int start;          // Head of the linked list
 
-struct Node
+// Function to print the sorted linked array
+void printList(int start)
 {
-    int value;
-    int next;
-};
-
-Node linkArray[MAX_SIZE]; // Array to store values and links
-int head = -1, freeIndex = 0;
-
-// Function to insert elements into the link array
-void insert(int val)
-{
-    if (freeIndex >= MAX_SIZE)
+    int index = start;
+    while (index != -1)
     {
-        cout << "Link array full!" << endl;
-        return;
+        cout << data[index] << " ";
+        index = link[index];
     }
-    linkArray[freeIndex].value = val;
-    linkArray[freeIndex].next = (head == -1) ? -1 : head;
-    head = freeIndex++;
+    cout << endl;
 }
 
-// Function to split linked array into two halves
-void split(int start, int &left, int &right)
+// Function to find the middle of the linked array list
+int findMiddle(int start)
 {
-    if (start == -1 || linkArray[start].next == -1)
+    if (start == -1)
+        return -1;
+    int slow = start, fast = start;
+    int prev = -1;
+
+    while (fast != -1 && link[fast] != -1)
     {
-        left = start;
-        right = -1;
-        return;
+        prev = slow;
+        slow = link[slow];
+        fast = link[link[fast]];
     }
-    int slow = start, fast = linkArray[start].next;
-    while (fast != -1 && linkArray[fast].next != -1)
-    {
-        slow = linkArray[slow].next;
-        fast = linkArray[linkArray[fast].next].next;
-    }
-    left = start;
-    right = linkArray[slow].next;
-    linkArray[slow].next = -1;
+
+    if (prev != -1)
+        link[prev] = -1; // Break the list into two halves
+    return slow;
 }
 
-// Function to merge two sorted lists
+// Merge two sorted linked lists
 int merge(int left, int right)
 {
     if (left == -1)
@@ -55,59 +47,78 @@ int merge(int left, int right)
     if (right == -1)
         return left;
 
-    int result;
-    if (linkArray[left].value <= linkArray[right].value)
+    int head;
+    if (data[left] <= data[right])
     {
-        result = left;
-        linkArray[left].next = merge(linkArray[left].next, right);
+        head = left;
+        left = link[left];
     }
     else
     {
-        result = right;
-        linkArray[right].next = merge(left, linkArray[right].next);
+        head = right;
+        right = link[right];
     }
-    return result;
+
+    int tail = head;
+    while (left != -1 && right != -1)
+    {
+        if (data[left] <= data[right])
+        {
+            link[tail] = left;
+            tail = left;
+            left = link[left];
+        }
+        else
+        {
+            link[tail] = right;
+            tail = right;
+            right = link[right];
+        }
+    }
+
+    if (left != -1)
+        link[tail] = left;
+    else
+        link[tail] = right;
+
+    return head;
 }
 
-// Merge Sort function
+// Merge Sort using linked array representation
 int mergeSort(int start)
 {
-    if (start == -1 || linkArray[start].next == -1)
-        return start;
-    int left, right;
-    split(start, left, right);
-    left = mergeSort(left);
-    right = mergeSort(right);
-    return merge(left, right);
-}
+    if (start == -1 || link[start] == -1)
+        return start; // Base case (1 or 0 elements)
 
-// Function to display sorted link array
-void display(int start)
-{
-    while (start != -1)
-    {
-        cout << linkArray[start].value << " ";
-        start = linkArray[start].next;
-    }
-    cout << endl;
+    int mid = findMiddle(start); // Find midpoint and split the list
+    int left = mergeSort(start); // Sort left half
+    int right = mergeSort(mid);  // Sort right half
+
+    return merge(left, right); // Merge two sorted halves
 }
 
 int main()
 {
-    // Insert values into the linked array
-    insert(30);
-    insert(10);
-    insert(50);
-    insert(20);
-    insert(40);
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> data[i];
+        link[i] = i + 1;
+    }
+    link[n - 1] = -1; // End of list
+    start = 0;        // Start at the first element
 
     cout << "Original List: ";
-    display(head);
+    printList(start);
 
-    head = mergeSort(head); // Sort using Merge Sort
+    start = mergeSort(start);
 
     cout << "Sorted List: ";
-    display(head);
+    printList(start);
 
     return 0;
 }
