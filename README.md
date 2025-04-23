@@ -3,12 +3,13 @@
 Welcome to the **Algorithm Design and Analysis** repository! This repository contains implementations of various algorithms and data structures, along with their analysis and practical applications. 🧠
 
 ## Table of Contents 📚
-- [Key Features](#key-features-✨)
-- [Prerequisites](#prerequisites-🔧)
-- [Installation](#installation-💾)
-- [How to Use](#how-to-use-📂)
-- [Contributions](#contributions-🤝)
-- [License](#license-📜)
+- [Key Features](#key-features-)
+- [Prerequisites](#prerequisites-)
+- [Installation](#installation-)
+- [How to Use](#how-to-use-)
+- [Contributions](#contributions-)
+- [Contact](#contact-)
+- [License](#license-)
 
 ## Key Features ✨
 - 🔥 **Optimized Algorithms**: Efficient solutions to diverse computational problems.
@@ -42,10 +43,22 @@ Welcome to the **Algorithm Design and Analysis** repository! This repository con
    ```
 
 ## Contributions 🤝
-Contributions are welcome! Here’s how you can contribute:
+Contributions are welcome! Here's how you can contribute:
 - Fork the repository. 🍴
-- Make improvements. 🛠️
+- Create a new branch: `git checkout -b feature/your-feature-name` 🌿
+- Make improvements to the code or documentation. 🛠️
+- Test your changes thoroughly.
+- Commit your changes: `git commit -m 'Add some feature'` 💬
+- Push to the branch: `git push origin feature/your-feature-name` 📤
 - Submit a pull request. 🎉
+
+Feel free to open issues for bugs or feature requests. For major changes, please discuss in issues first.
+
+## Contact 📧
+Questions or suggestions? Reach out through:
+- GitHub Issues
+- Email: [sakshamsinghrathore1304@gmail.com](mailto:your-email@example.com)
 
 ## License 📜
 This repository is licensed under the MIT License. See the [LICENSE](https://github.com/saksham-1304/Algorithm_Design_And_Analysis/blob/main/LICENSE) file for details.
+
