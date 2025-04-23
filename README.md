@@ -56,7 +56,7 @@ Feel free to open issues for bugs or feature requests. For major changes, please
 
 ## Contact 📧
 Questions or suggestions? Reach out through:
-- GitHub Issues
+- [GitHub Issues](https://github.com/saksham-1304/Algorithm_Design_And_Analysis/issues)
 - Email: [sakshamsinghrathore1304@gmail.com](mailto:your-email@example.com)
 
 ## License 📜
