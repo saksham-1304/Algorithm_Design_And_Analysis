@@ -1,16 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Item {
+class Item
+{
 public:
     int weight, profit;
     double ratio;
-    Item(int w, int p) : weight(w), profit(p) {
+    Item(int w, int p) : weight(w), profit(p)
+    {
         ratio = (double)p / w;
     }
 };
 
-class Node {
+class Node
+{
 public:
     int level, profit, weight;
     double bound;
@@ -18,11 +21,13 @@ public:
     Node(int l, int p, int w) : level(l), profit(p), weight(w), bound(0.0) {}
 };
 
-bool cmp(Item a, Item b) {
+bool cmp(Item a, Item b)
+{
     return a.ratio > b.ratio;
 }
 
-double bound(Node* u, int n, int W, vector<Item>& items) {
+double bound(Node *u, int n, int W, vector<Item> &items)
+{
     if (u->weight >= W)
         return 0;
 
@@ -30,7 +35,8 @@ double bound(Node* u, int n, int W, vector<Item>& items) {
     int j = u->level + 1;
     int totalWeight = u->weight;
 
-    while (j < n && totalWeight + items[j].weight <= W) {
+    while (j < n && totalWeight + items[j].weight <= W)
+    {
         totalWeight += items[j].weight;
         profit_bound += items[j].profit;
         j++;
@@ -42,22 +48,26 @@ double bound(Node* u, int n, int W, vector<Item>& items) {
     return profit_bound;
 }
 
-int knapsackBranchAndBound(int W, vector<Item>& items) {
+int knapsackBranchAndBound(int W, vector<Item> &items)
+{
     sort(items.begin(), items.end(), cmp);
     int n = items.size();
 
-    queue<Node*> Q;
-    Node* u = new Node(-1, 0, 0);
+    queue<Node *> Q;
+    Node *u = new Node(-1, 0, 0);
     u->bound = bound(u, n, W, items);
     Q.push(u);
 
     int maxProfit = 0;
 
-    while (!Q.empty()) {
-        Node* v = Q.front(); Q.pop();
-        if (v->level == n - 1) continue;
+    while (!Q.empty())
+    {
+        Node *v = Q.front();
+        Q.pop();
+        if (v->level == n - 1)
+            continue;
 
-        Node* u = new Node(v->level + 1, v->profit + items[v->level + 1].profit, v->weight + items[v->level + 1].weight);
+        Node *u = new Node(v->level + 1, v->profit + items[v->level + 1].profit, v->weight + items[v->level + 1].weight);
 
         if (u->weight <= W && u->profit > maxProfit)
             maxProfit = u->profit;
@@ -75,14 +85,16 @@ int knapsackBranchAndBound(int W, vector<Item>& items) {
     return maxProfit;
 }
 
-int main() {
+int main()
+{
     int n, W;
     cout << "Enter number of items: ";
     cin >> n;
 
     vector<Item> items;
     cout << "Enter weight and profit for each item:\n";
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i)
+    {
         int w, p;
         cin >> w >> p;
         items.emplace_back(w, p);
@@ -96,7 +108,7 @@ int main() {
 
     return 0;
 }
-/* 
+/*
 Test case:
  Enter number of items: 4
  Enter weight and profit for each item:
